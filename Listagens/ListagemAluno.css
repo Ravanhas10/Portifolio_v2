@@ -1,0 +1,5 @@
+/* Listagem de alunos */
+th:last-child,
+td:last-child {
+    text-align: right
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Turmas</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="ListagemTurma.css">
+</head>
+
+<body>
+    <div class="app">
+        <nav id="menu"></nav>
+        <main id="main"></main>
+    </div>
+    <script>var ROOT = "../";</script>
+    <script src="../app.js"></script>
+    <script>
+        M.innerHTML = head("Turmas", "", '<a class="btn" href="../Cadastros/CadastroTurma.html">Cadastrar turma</a>') + (db.turmas.length ? '<div class="card tw"><table><tr><th>Turma</th><th>Ano</th><th>Turno</th><th>Alunos</th><th></th></tr>' + db.turmas.map(function (t) { return '<tr><td>' + esc(t.nome) + '</td><td>' + t.ano + '</td><td>' + t.turno + '</td><td>' + db.alunos.filter(function (a) { return a.turmaId == t.id }).length + '</td><td><button class="btn ghost sm" data-del="turmas:' + t.id + '">Excluir</button></td></tr>' }).join("") + '</table></div>' : empty("Nenhuma turma cadastrada.", "Cadastros/CadastroTurma.html", "Cadastrar turma"));
+    </script>
+</body>
+
+</html>

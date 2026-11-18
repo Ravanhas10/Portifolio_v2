@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="login">
+        <div class="card">
+            <div class="logo"><i></i>Portfólio Escolar</div>
+            <p class="meta">Entre para gerenciar turmas, alunos e projetos.</p>
+            <form id="f"><label>E-mail<input name="email" type="email" required
+                        autocomplete="username"></label><label>Senha<input name="senha" type="password" required
+                        autocomplete="current-password"></label><button class="btn">Entrar</button></form>
+            <p class="meta">Versão de demonstração: qualquer e-mail e senha funcionam.</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("f").onsubmit = function (e) { e.preventDefault(); try { sessionStorage.setItem("logado", "1") } catch (x) { } location.href = "index.html" };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastrar aluno</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="CadastroAluno.css">
+</head>
+
+<body>
+    <div class="app">
+        <nav id="menu"></nav>
+        <main id="main"></main>
+    </div>
+    <script>var ROOT = "../";</script>
+    <script src="../app.js"></script>
+    <script>
+        if (!db.turmas.length) { M.innerHTML = head("Cadastrar aluno") + empty("Cadastre uma turma antes de adicionar alunos.", "Cadastros/CadastroTurma.html", "Cadastrar turma") }
+        else {
+            M.innerHTML = head("Cadastrar aluno") + '<form id="f" class="card"><label>Nome completo<input name="nome" required></label><label>E-mail<input name="email" type="email" required></label><label class="full">Turma<select name="turmaId">' + turmaOpts() + '</select></label><div class="full"><button class="btn">Salvar aluno</button></div></form>';
+            $("f").onsubmit = function (e) { e.preventDefault(); var d = fd(e); d.id = nid(db.alunos); d.turmaId = +d.turmaId; d.tel = ""; d.hab = ""; d.bio = ""; db.alunos.push(d); save(); go("Listagens/ListagemAluno.html", "Aluno salvo") };
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alunos</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="ListagemAluno.css">
+</head>
+
+<body>
+    <div class="app">
+        <nav id="menu"></nav>
+        <main id="main"></main>
+    </div>
+    <script>var ROOT = "../";</script>
+    <script src="../app.js"></script>
+    <script>
+        M.innerHTML = head("Alunos", "", '<a class="btn" href="../Cadastros/CadatroAluno.html">Cadastrar aluno</a>') + (db.alunos.length ? '<div class="card tw"><table><tr><th>Nome</th><th>E-mail</th><th>Turma</th><th></th></tr>' + db.alunos.map(function (a) { var t = by(db.turmas, a.turmaId); return '<tr><td>' + esc(a.nome) + '</td><td>' + esc(a.email) + '</td><td>' + (t ? esc(t.nome) : "—") + '</td><td><a class="btn ghost sm" href="../Portfolio.html#' + a.id + '">Ver portfólio</a> <button class="btn ghost sm" data-del="alunos:' + a.id + '">Excluir</button></td></tr>' }).join("") + '</table></div>' : empty("Nenhum aluno cadastrado.", "Cadastros/CadatroAluno.html", "Cadastrar aluno"));
+    </script>
+</body>
+
+</html>

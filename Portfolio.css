@@ -1,0 +1,27 @@
+/* Portfólio individual */
+.who {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px
+}
+
+.who p {
+    margin: 8px 0
+}
+
+.av {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--acc);
+    color: var(--accink);
+    display: grid;
+    place-items: center;
+    font: 700 2rem "Bricolage Grotesque", sans-serif
+}
+
+main>h2 {
+    margin: 28px 0 14px
+}

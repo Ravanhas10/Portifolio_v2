@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfólio individual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Portfolio.css">
+</head>
+
+<body>
+    <div class="app">
+        <nav id="menu"></nav>
+        <main id="main"></main>
+    </div>
+    <script>var ROOT = "";</script>
+    <script src="app.js"></script>
+    <script>
+        if (!db.alunos.length) { M.innerHTML = head("Portfólio individual") + empty("Nenhum aluno cadastrado.", "Cadastros/CadatroAluno.html", "Cadastrar aluno") }
+        else {
+            var a = by(db.alunos, location.hash.slice(1)) || db.alunos[0], t = by(db.turmas, a.turmaId), ps = db.projetos.filter(function (p) { return p.alunoId == a.id });
+            M.innerHTML = head("Portfólio individual", "", '<label style="margin:0">Aluno<select id="sel">' + alunoOpts(a.id) + '</select></label>') +
+                '<div class="card who"><div class="av">' + esc(a.nome.charAt(0)) + '</div><div><h2>' + esc(a.nome) + '</h2><div class="meta">' + (t ? esc(t.nome) : "") + ' · ' + esc(a.email) + (a.tel ? ' · ' + esc(a.tel) : '') + '</div><p>' + (a.bio ? esc(a.bio) : "Sem biografia ainda.") + '</p>' + a.hab.split(",").filter(function (x) { return x.trim() }).map(function (x) { return '<span class="tag">' + esc(x.trim()) + '</span>' }).join("") + '</div></div>' +
+                '<h2>Projetos (' + ps.length + ')</h2>' + (ps.length ? '<div class="grid">' + ps.map(projCard).join("") + '</div>' : empty("Este aluno ainda não tem projetos.", "Cadastros/CadatroProjeto.html", "Cadastrar projeto")) +
+                '<h2>Informações do aluno</h2><form id="f" class="card"><label>Telefone<input name="tel" value="' + esc(a.tel) + '"></label><label>Habilidades (separe por vírgula)<input name="hab" value="' + esc(a.hab) + '"></label><label class="full">Sobre o aluno<textarea name="bio">' + esc(a.bio) + '</textarea></label><div class="full"><button class="btn">Salvar informações</button></div></form>';
+            $("sel").onchange = function () { location.hash = this.value; location.reload() };
+            $("f").onsubmit = function (e) { e.preventDefault(); var d = fd(e); a.tel = d.tel; a.hab = d.hab; a.bio = d.bio; save(); try { sessionStorage.setItem("msg", "Informações salvas") } catch (x) { } location.reload() };
+        }
+    </script>
+</body>
+
+</html>

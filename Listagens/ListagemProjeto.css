@@ -1,0 +1,5 @@
+/* Listagem de projetos */
+th:last-child,
+td:last-child {
+    text-align: right
+}

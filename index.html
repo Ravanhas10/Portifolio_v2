@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <nav id="menu"></nav>
+        <main id="main"></main>
+    </div>
+    <script>var ROOT = "";</script>
+    <script src="app.js"></script>
+    <script>
+        M.innerHTML = head("Dashboard", "Resumo do que já foi cadastrado.") + '<div class="stats"><div class="card stat hi"><b>' + db.projetos.length + '</b><span>Projetos</span></div><div class="card stat"><b>' + db.alunos.length + '</b><span>Alunos</span></div><div class="card stat"><b>' + db.turmas.length + '</b><span>Turmas</span></div></div><h2 style="margin-bottom:14px">Exibição de projetos</h2>' + (db.projetos.length ? '<div class="grid">' + db.projetos.map(projCard).join("") + '</div>' : empty("Nenhum projeto ainda.", "Cadastros/CadatroProjeto.html", "Cadastrar projeto"));
+    </script>
+</body>
+
+</html>

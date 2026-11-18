@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastrar turma</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="CadastroTurma.css">
+</head>
+
+<body>
+    <div class="app">
+        <nav id="menu"></nav>
+        <main id="main"></main>
+    </div>
+    <script>var ROOT = "../";</script>
+    <script src="../app.js"></script>
+    <script>
+        M.innerHTML = head("Cadastrar turma") + '<form id="f" class="card"><label>Nome da turma<input name="nome" required></label><label>Ano letivo<input name="ano" type="number" value="2026" required></label><label class="full">Turno<select name="turno"><option>Manhã</option><option>Tarde</option><option>Noite</option></select></label><div class="full"><button class="btn">Salvar turma</button></div></form>';
+        $("f").onsubmit = function (e) { e.preventDefault(); var d = fd(e); d.id = nid(db.turmas); d.ano = +d.ano; db.turmas.push(d); save(); go("Listagens/ListagemTurma.html", "Turma salva") };
+    </script>
+</body>
+
+</html>

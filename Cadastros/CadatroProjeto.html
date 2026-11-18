@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastrar projeto</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="CadastroProjeto.css">
+</head>
+
+<body>
+    <div class="app">
+        <nav id="menu"></nav>
+        <main id="main"></main>
+    </div>
+    <script>var ROOT = "../";</script>
+    <script src="../app.js"></script>
+    <script>
+        if (!db.alunos.length) { M.innerHTML = head("Cadastrar projeto") + empty("Cadastre um aluno antes de adicionar projetos.", "Cadastros/CadatroAluno.html", "Cadastrar aluno") }
+        else {
+            M.innerHTML = head("Cadastrar projeto") + '<form id="f" class="card"><label>Título<input name="titulo" required></label><label>Aluno<select name="alunoId">' + alunoOpts() + '</select></label><label class="full">Descrição<textarea name="desc" required></textarea></label><label>Tecnologias (separe por vírgula)<input name="tags"></label><label>Data<input name="data" type="date" value="2026-11-12"></label><label class="full">Link do projeto<input name="link" type="url" placeholder="https://"></label><div class="full"><button class="btn">Salvar projeto</button></div></form>';
+            $("f").onsubmit = function (e) { e.preventDefault(); var d = fd(e); d.id = nid(db.projetos); d.alunoId = +d.alunoId; db.projetos.push(d); save(); go("Listagens/ListagemProjeto.html", "Projeto salvo") };
+        }
+    </script>
+</body>
+
+</html>
